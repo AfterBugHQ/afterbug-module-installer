@@ -1,6 +1,6 @@
 <phpunit colors="true">
     <testsuites>
-        <testsuite name="Laravel Module Installer Tests">
+        <testsuite name="AfterBug Module Installer Tests">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

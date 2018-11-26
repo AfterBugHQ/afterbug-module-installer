@@ -5,9 +5,9 @@ use PHPUnit\Framework\TestCase;
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
-use Joshbrw\LaravelModuleInstaller\LaravelModuleInstaller;
+use AfterBugHQ\ModuleInstaller\AfterBugModuleInstaller;
 
-class LaravelModuleInstallerTest extends TestCase
+class AfterBugModuleInstallerTest extends TestCase
 {
     protected $io;
     protected $composer;
@@ -25,7 +25,7 @@ class LaravelModuleInstallerTest extends TestCase
             'get' => $this->composer,
         ])->shouldReceive('getExtra')->byDefault();
 
-        $this->test = new LaravelModuleInstaller(
+        $this->test = new AfterBugModuleInstaller(
             $this->io, $this->composer
         );
     }
@@ -35,12 +35,12 @@ class LaravelModuleInstallerTest extends TestCase
      *
      * Your package composer.json file must include:
      *
-     *    "type": "laravel-module",
+     *    "type": "afterbug-module",
      */
-    public function it_supports_laravel_module_type_only()
+    public function it_supports_afterbug_module_type_only()
     {
         $this->assertFalse($this->test->supports('module'));
-        $this->assertTrue($this->test->supports('laravel-module'));
+        $this->assertTrue($this->test->supports('afterbug-module'));
     }
 
     /**

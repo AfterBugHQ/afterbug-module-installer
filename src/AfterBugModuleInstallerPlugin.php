@@ -1,17 +1,17 @@
 <?php
 
-namespace Joshbrw\LaravelModuleInstaller;
+namespace AfterBugHQ\ModuleInstaller;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-class LaravelModuleInstallerPlugin implements PluginInterface
+class AfterBugModuleInstallerPlugin implements PluginInterface
 {
 
     public function activate(Composer $composer, IOInterface $io)
     {
-        $installer = new LaravelModuleInstaller($io, $composer);
+        $installer = new AfterBugModuleInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
 

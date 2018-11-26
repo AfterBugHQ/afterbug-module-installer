@@ -1,13 +1,13 @@
 <?php
 
-namespace Joshbrw\LaravelModuleInstaller;
+namespace AfterBugHQ\ModuleInstaller;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 
-class LaravelModuleInstaller extends LibraryInstaller
+class AfterBugModuleInstaller extends LibraryInstaller
 {
     const DEFAULT_ROOT = "Modules";
 
@@ -82,6 +82,6 @@ class LaravelModuleInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'laravel-module' === $packageType;
+        return 'afterbug-module' === $packageType;
     }
 }
