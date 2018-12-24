@@ -17,7 +17,7 @@ class AfterBugModuleInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->getBaseInstallationPath() . '/' . $this->getModuleName($package);
+        return $this->getBaseInstallationPath() . '/' . $this->getModuleDirectory($package);
     }
 
     /**
@@ -41,12 +41,12 @@ class AfterBugModuleInstaller extends LibraryInstaller
     }
 
     /**
-     * Get the module name, i.e. "joshbrw/something-module" will be transformed into "Something"
+     * Get the module name, i.e. "afterbug/something-module" will be transformed into "afterbug/something"
      * @param PackageInterface $package
      * @return string
      * @throws \Exception
      */
-    protected function getModuleName(PackageInterface $package)
+    protected function getModuleDirectory(PackageInterface $package)
     {
         $name = $package->getPrettyName();
         $split = explode("/", $name);
@@ -65,7 +65,9 @@ class AfterBugModuleInstaller extends LibraryInstaller
             throw new \Exception($this->usage());
         }
 
-        return implode('',array_map('ucfirst', $splitNameToUse));
+        array_unshift($splitNameToUse, $split[0]);
+
+        return implode('/', array_map('strtolower', $splitNameToUse));
     }
 
     /**
